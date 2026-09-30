@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#f1eee5">
+	<meta name="description" content="Découvrez les éléphants, leur vie en famille, leurs étonnantes capacités et les défis de leur protection.">
+	<title>Les géants sensibles — Un monde d'éléphants</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--paper: #f1eee5;
+			--white: #fbfaf6;
+			--ink: #252923;
+			--muted: #72766d;
+			--forest: #405c4b;
+			--green: #839276;
+			--rust: #bd694d;
+			--gold: #e2bd70;
+			--line: #d7d8cd;
+			--serif: "Playfair Display", Georgia, serif;
+			--sans: "DM Sans", sans-serif;
+		}
+		* { box-sizing: border-box; }
+		body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+		button { font: inherit; }
+		.wrap { width: min(1260px, calc(100% - 64px)); margin: 0 auto; }
+		.masthead { min-height: 76px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+		.wordmark { display: flex; align-items: center; gap: 11px; font-size: 14px; font-weight: 700; }
+		.mark { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--forest); color: var(--gold); font: 18px var(--serif); }
+		.edition { color: var(--muted); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+		.hero { display: grid; grid-template-columns: 1fr 1.04fr; gap: 76px; align-items: center; padding: 70px 0 79px; }
+		.eyebrow { display: flex; align-items: center; gap: 10px; color: var(--rust); font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+		.eyebrow::before { content: ""; width: 22px; height: 1px; background: currentColor; }
+		h1, h2, h3, p { margin-top: 0; }
+		h1 { max-width: 590px; margin: 20px 0; font: 600 clamp(54px, 7vw, 88px)/.98 var(--serif); }
+		h1 em { color: var(--forest); }
+		.hero-copy { max-width: 440px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+		.hero-note { display: flex; align-items: center; gap: 11px; margin-top: 27px; color: var(--forest); font-size: 12px; font-weight: 600; }
+		.note-mark { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid #b7c0b1; border-radius: 50%; font: 17px var(--serif); }
+		.hero-image { height: min(43vw, 520px); min-height: 370px; position: relative; }
+		.hero-image img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 45% 45% 5px 5px; }
+		.image-caption { position: absolute; right: -20px; bottom: 28px; display: grid; place-content: center; width: 128px; height: 128px; border-radius: 50%; background: var(--gold); text-align: center; transform: rotate(7deg); }
+		.image-caption strong { font: 600 27px/.98 var(--serif); }
+		.image-caption span { margin-top: 6px; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+		.ribbon { background: var(--forest); color: var(--white); }
+		.ribbon-inner { display: flex; justify-content: space-between; gap: 20px; padding: 17px 0; font: 500 17px var(--serif); }
+		.ribbon b { color: var(--gold); font: 12px var(--sans); }
+		.section { padding: 82px 0; }
+		.section-head { display: flex; justify-content: space-between; gap: 30px; align-items: end; margin-bottom: 32px; }
+		.section-head h2 { max-width: 570px; margin: 12px 0 0; font: 600 clamp(39px, 5vw, 57px)/1.06 var(--serif); }
+		.section-head > p { max-width: 335px; margin: 0 0 4px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+		.facts-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+		.fact { padding: 26px 28px 29px 0; }
+		.fact + .fact { padding-left: 27px; border-left: 1px solid var(--line); }
+		.fact-index { color: var(--rust); font: 600 16px var(--serif); }
+		.fact h3 { margin: 15px 0 9px; font: 600 24px var(--serif); }
+		.fact p { max-width: 340px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+		.scene { display: grid; grid-template-columns: 1fr 1fr; gap: 67px; align-items: center; padding: 5px 0 83px; }
+		.scene-image { height: 360px; }
+		.scene-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
+		.scene-copy h2 { margin: 13px 0 16px; font: 600 clamp(37px, 4vw, 50px)/1.07 var(--serif); }
+		.scene-copy > p { max-width: 460px; color: var(--muted); font-size: 14px; line-height: 1.85; }
+		.fact-button { display: inline-flex; align-items: center; gap: 12px; margin-top: 3px; padding: 0 0 7px; border: 0; border-bottom: 1px solid var(--forest); background: transparent; color: var(--forest); font-size: 12px; font-weight: 700; cursor: pointer; }
+		.fact-button span { font-size: 17px; transition: transform .2s; }
+		.fact-button:hover span { transform: rotate(35deg); }
+		.quiz-band { padding: 70px 0; background: #e2e5d9; }
+		.quiz-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 68px; align-items: start; }
+		.quiz-intro h2 { margin: 14px 0; font: 600 clamp(39px, 4.7vw, 55px)/1.04 var(--serif); }
+		.quiz-intro p { max-width: 340px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+		.quiz-box { padding: 26px 29px 24px; border-top: 2px solid var(--forest); background: rgba(251,250,246,.7); }
+		.quiz-count { color: var(--forest); font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+		.quiz-question { min-height: 57px; margin: 10px 0 16px; font: 600 24px/1.25 var(--serif); }
+		.answers { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+		.answer { min-height: 49px; padding: 10px 12px; border: 1px solid #c4cbbb; border-radius: 3px; background: transparent; color: var(--ink); text-align: left; font-size: 12px; cursor: pointer; transition: color .16s, background .16s, border-color .16s; }
+		.answer:hover, .answer:focus-visible { border-color: var(--forest); outline: none; }
+		.answer[aria-pressed="true"] { border-color: var(--forest); background: var(--forest); color: white; }
+		.quiz-controls { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 19px; }
+		.progress { display: flex; gap: 5px; }
+		.progress span { width: 22px; height: 3px; background: #c4cbbb; }
+		.progress span.active { background: var(--rust); }
+		.next { display: flex; align-items: center; gap: 12px; padding: 11px 14px; border: 0; border-radius: 3px; background: var(--rust); color: white; font-size: 11px; font-weight: 700; cursor: pointer; }
+		.next:disabled { opacity: .43; cursor: not-allowed; }
+		.result { display: none; padding: 21px; border-left: 3px solid var(--rust); background: rgba(251,250,246,.75); }
+		.result.visible { display: block; }
+		.result h3 { margin: 9px 0; font: 600 28px var(--serif); }
+		.result p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.75; }
+		footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+		.footer-inner { display: flex; justify-content: space-between; gap: 16px; padding: 21px 0; }
+		.footer-inner strong { color: var(--forest); }
+		@media (max-width: 740px) {
+			.wrap { width: min(100% - 36px, 560px); }
+			.masthead { min-height: 65px; }
+			.edition { font-size: 9px; }
+			.hero { grid-template-columns: 1fr; gap: 29px; padding: 49px 0 57px; }
+			h1 { font-size: clamp(54px, 15vw, 77px); }
+			.hero-image { height: 103vw; min-height: 325px; max-height: 480px; margin: 0 18px 0 2px; }
+			.image-caption { right: -16px; width: 108px; height: 108px; }
+			.image-caption strong { font-size: 24px; }
+			.ribbon-inner { justify-content: flex-start; overflow: hidden; gap: 20px; font-size: 15px; }
+			.ribbon-inner span:nth-of-type(n+3) { display: none; }
+			.section { padding: 61px 0; }
+			.section-head { display: block; }
+			.section-head > p { margin-top: 15px; }
+			.facts-grid { grid-template-columns: 1fr; }
+			.fact, .fact + .fact { padding: 22px 0; border-left: 0; }
+			.fact + .fact { border-top: 1px solid var(--line); }
+			.scene { grid-template-columns: 1fr; gap: 27px; padding: 0 0 60px; }
+			.scene-image { height: 64vw; min-height: 225px; max-height: 350px; }
+			.quiz-band { padding: 54px 0; }
+			.quiz-layout { grid-template-columns: 1fr; gap: 23px; }
+			.quiz-box { padding: 21px 16px; }
+			.quiz-question { font-size: 22px; }
+			.answer { font-size: 11px; }
+			.footer-inner { flex-direction: column; gap: 7px; }
+		}
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+		}
+	</style>
+</head>
+<body>
+	<header class="wrap masthead">
+		<div class="wordmark"><span class="mark" aria-hidden="true">✳</span> Les géants sensibles</div>
+		<div class="edition">Un monde d'éléphants · N° 01</div>
+	</header>
+
+	<main>
+		<section class="wrap hero" aria-labelledby="main-title">
+			<div>
+				<div class="eyebrow">À la rencontre des éléphants</div>
+				<h1 id="main-title">Une mémoire immense, <em>un cœur de famille.</em></h1>
+				<p class="hero-copy">Imposants et délicats, les éléphants vivent au sein de liens familiaux forts. Approchons-nous de leur monde, de leurs étonnantes capacités et des gestes qui aident à les protéger.</p>
+				<div class="hero-note"><span class="note-mark" aria-hidden="true">01</span> Un carnet de découverte, tout simplement</div>
+			</div>
+			<div class="hero-image">
+				<img src="https://images.unsplash.com/photo-1557050543-4d5f4e07ef46?auto=format&fit=crop&w=1200&q=85" alt="Un éléphant dans son habitat naturel">
+				<div class="image-caption"><strong>En famille</strong><span>depuis toujours</span></div>
+			</div>
+		</section>
+
+		<div class="ribbon" aria-label="Quelques mots sur les éléphants">
+			<div class="wrap ribbon-inner"><span>Des liens durables <b>✳</b></span><span>Une trompe habile <b>✳</b></span><span>Des pas silencieux <b>✳</b></span><span>Un monde à protéger</span></div>
+		</div>
+
+		<section class="wrap section" aria-labelledby="basics-title">
+			<div class="section-head">
+				<div><div class="eyebrow">Quelques repères</div><h2 id="basics-title">Des géants, tout en nuances.</h2></div>
+				<p>Il existe trois espèces vivantes d'éléphants : l'éléphant de savane d'Afrique, l'éléphant de forêt d'Afrique et l'éléphant d'Asie.</p>
+			</div>
+			<div class="facts-grid">
+				<article class="fact"><div class="fact-index">01 / La famille</div><h3>Un groupe soudé</h3><p>Les éléphants vivent dans des groupes familiaux souvent guidés par une femelle expérimentée. Les liens et l'entraide jouent un rôle essentiel dans leur quotidien.</p></article>
+				<article class="fact"><div class="fact-index">02 / La trompe</div><h3>Un outil remarquable</h3><p>La trompe sert à respirer, sentir, toucher, boire et saisir. Elle est composée de milliers de muscles et demande une grande précision.</p></article>
+				<article class="fact"><div class="fact-index">03 / La communication</div><h3>Bien au-delà du barrissement</h3><p>Les éléphants communiquent par des sons, des postures et des vibrations du sol, dont certaines peuvent être perçues à distance.</p></article>
+			</div>
+		</section>
+
+		<section class="wrap scene" aria-labelledby="scene-title">
+			<div class="scene-image"><img src="https://images.unsplash.com/photo-1564760055775-d63b17a55c44?auto=format&fit=crop&w=1100&q=85" alt="Un éléphant avance dans un paysage de savane" loading="lazy"></div>
+			<div class="scene-copy"><div class="eyebrow">Le saviez-vous ?</div><h2>Une mémoire qui se construit avec l'expérience.</h2><p>Les éléphants peuvent se souvenir de chemins, de points d'eau et d'autres individus rencontrés. Cette mémoire, associée à leur expérience, peut aider le groupe à traverser des périodes difficiles.</p><p id="extra-fact" hidden>Les éléphants d'Asie et d'Afrique sont les seuls mammifères terrestres capables de se reconnaître dans un miroir, un signe étudié de conscience de soi.</p><button class="fact-button" id="fact-button" type="button" aria-expanded="false">Une autre découverte <span aria-hidden="true">↗</span></button></div>
+		</section>
+
+		<section class="quiz-band" aria-labelledby="quiz-title">
+			<div class="wrap quiz-layout">
+				<div class="quiz-intro"><div class="eyebrow">La minute curieuse</div><h2>Que savez-vous des éléphants ?</h2><p>Trois petites questions pour tester vos connaissances. Prêt à suivre la piste ?</p></div>
+				<div class="quiz-box" id="quiz-box" aria-live="polite">
+					<div class="quiz-count" id="quiz-count">Question 1 sur 3</div>
+					<h3 class="quiz-question" id="quiz-question">Combien d'espèces d'éléphants vivent aujourd'hui ?</h3>
+					<div class="answers" id="answers"></div>
+					<div class="quiz-controls" id="quiz-controls">
+						<div class="progress" aria-hidden="true"><span class="active"></span><span></span><span></span></div>
+						<button class="next" id="next" type="button" disabled>Continuer <span aria-hidden="true">→</span></button>
+					</div>
+					<div class="result" id="result" role="status"></div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer><div class="wrap footer-inner"><strong>Les géants sensibles</strong><span>Un regard curieux et respectueux sur les éléphants.</span><span>© 2026</span></div></footer>
+
+	<script>
+		const questions = [
+			{
+				prompt: "Combien d'espèces d'éléphants vivent aujourd'hui ?",
+				answers: [
+					{ text: "Une seule", correct: false },
+					{ text: "Trois espèces", correct: true },
+					{ text: "Six espèces", correct: false }
+				]
+			},
+			{
+				prompt: "À quoi sert aussi la trompe ?",
+				answers: [
+					{ text: "À sentir et saisir des objets", correct: true },
+					{ text: "Uniquement à boire", correct: false },
+					{ text: "À produire des sons seulement", correct: false }
+				]
+			},
+			{
+				prompt: "Qui guide souvent le groupe familial ?",
+				answers: [
+					{ text: "Le plus jeune éléphanteau", correct: false },
+					{ text: "Une femelle expérimentée", correct: true },
+					{ text: "Un individu choisi chaque matin", correct: false }
+				]
+			}
+		];
+		let questionIndex = 0;
+		let correctAnswers = 0;
+		let answerSelected = false;
+		const questionTitle = document.querySelector("#quiz-question");
+		const countLabel = document.querySelector("#quiz-count");
+		const answersContainer = document.querySelector("#answers");
+		const nextButton = document.querySelector("#next");
+		const resultBox = document.querySelector("#result");
+
+		function renderQuestion() {
+			const current = questions[questionIndex];
+			answerSelected = false;
+			countLabel.textContent = `Question ${questionIndex + 1} sur ${questions.length}`;
+			questionTitle.textContent = current.prompt;
+			answersContainer.replaceChildren();
+			current.answers.forEach((answer) => {
+				const option = document.createElement("button");
+				option.type = "button";
+				option.className = "answer";
+				option.textContent = answer.text;
+				option.setAttribute("aria-pressed", "false");
+				option.addEventListener("click", () => {
+					if (answerSelected) return;
+					answerSelected = true;
+					if (answer.correct) correctAnswers += 1;
+					option.setAttribute("aria-pressed", "true");
+					nextButton.disabled = false;
+				});
+				answersContainer.append(option);
+			});
+			document.querySelectorAll(".progress span").forEach((step, index) => step.classList.toggle("active", index <= questionIndex));
+			nextButton.disabled = true;
+			nextButton.innerHTML = questionIndex === questions.length - 1 ? 'Voir mon score <span aria-hidden="true">→</span>' : 'Continuer <span aria-hidden="true">→</span>';
+		}
+
+		nextButton.addEventListener("click", () => {
+			if (!answerSelected) return;
+			if (questionIndex < questions.length - 1) {
+				questionIndex += 1;
+				renderQuestion();
+				return;
+			}
+			const message = correctAnswers === questions.length
+				? "Impressionnant, vous connaissez déjà très bien ces animaux."
+				: correctAnswers > 0
+					? "Belle découverte ! Vous avez quelques nouvelles anecdotes à raconter."
+					: "Voilà une bonne occasion d'en apprendre davantage sur ces animaux fascinants.";
+			resultBox.innerHTML = `<div class="quiz-count">Votre résultat</div><h3>${correctAnswers} bonne${correctAnswers === 1 ? "" : "s"} réponse${correctAnswers === 1 ? "" : "s"} sur ${questions.length}</h3><p>${message}</p>`;
+			resultBox.classList.add("visible");
+			document.querySelector("#quiz-controls").hidden = true;
+			answersContainer.hidden = true;
+			questionTitle.hidden = true;
+			countLabel.hidden = true;
+		});
+		renderQuestion();
+
+		document.querySelector("#fact-button").addEventListener("click", (event) => {
+			const extraFact = document.querySelector("#extra-fact");
+			const isExpanded = extraFact.hidden;
+			extraFact.hidden = !isExpanded;
+			event.currentTarget.setAttribute("aria-expanded", String(isExpanded));
+			event.currentTarget.innerHTML = isExpanded
+				? 'Refermer la découverte <span aria-hidden="true">↗</span>'
+				: 'Une autre découverte <span aria-hidden="true">↗</span>';
+		});
+	</script>
+</body>
+</html>
