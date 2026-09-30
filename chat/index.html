@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#f7f4ed">
+	<meta name="description" content="Un petit magazine consacré aux chats : leurs habitudes, leur caractère et l'art de vivre avec eux.">
+	<title>La vie en miaou — Le petit journal du chat</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--cream: #f7f4ed;
+			--white: #fffdf8;
+			--ink: #282d28;
+			--muted: #777a70;
+			--moss: #536b4d;
+			--rust: #c96e4d;
+			--pink: #edc9ba;
+			--line: #deddd3;
+			--serif: "Playfair Display", Georgia, serif;
+			--sans: "DM Sans", sans-serif;
+		}
+		* { box-sizing: border-box; }
+		body { margin: 0; color: var(--ink); background: var(--cream); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+		button { font: inherit; }
+		.wrap { width: min(1240px, calc(100% - 64px)); margin: 0 auto; }
+		.masthead { min-height: 78px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+		.wordmark { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 700; }
+		.cat-icon { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--moss); color: var(--cream); font-size: 18px; }
+		.edition { color: var(--muted); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+		.hero { display: grid; grid-template-columns: 1fr 1.05fr; gap: 76px; align-items: center; padding: 69px 0 78px; }
+		.kicker { display: flex; align-items: center; gap: 10px; color: var(--rust); font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+		.kicker::before { content: ""; width: 23px; height: 1px; background: currentColor; }
+		h1, h2, h3, p { margin-top: 0; }
+		h1 { max-width: 530px; margin: 19px 0; font: 600 clamp(55px, 7vw, 86px)/.98 var(--serif); }
+		h1 em { color: var(--moss); }
+		.intro { max-width: 440px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+		.hero-meta { display: flex; align-items: center; gap: 11px; margin-top: 26px; color: var(--moss); font-size: 12px; font-weight: 600; }
+		.meta-stamp { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid #b8c3b2; border-radius: 50%; font: 18px var(--serif); }
+		.hero-art { position: relative; height: min(43vw, 510px); min-height: 370px; }
+		.hero-art img { width: 100%; height: 100%; display: block; object-fit: cover; border-radius: 48% 48% 4px 4px; }
+		.round-note { position: absolute; right: -23px; bottom: 27px; display: grid; place-content: center; width: 119px; height: 119px; border-radius: 50%; background: var(--pink); text-align: center; transform: rotate(8deg); }
+		.round-note strong { font: 600 28px/.95 var(--serif); }
+		.round-note span { margin-top: 6px; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+		.ribbon { background: var(--moss); color: var(--white); }
+		.ribbon-inner { display: flex; justify-content: space-between; gap: 20px; padding: 17px 0; font: 500 17px var(--serif); }
+		.ribbon b { color: var(--pink); font: 13px var(--sans); }
+		.section { padding: 79px 0; }
+		.section-head { display: flex; justify-content: space-between; gap: 30px; align-items: end; margin-bottom: 31px; }
+		.section-head h2 { max-width: 540px; margin: 12px 0 0; font: 600 clamp(38px, 5vw, 55px)/1.07 var(--serif); }
+		.section-head > p { max-width: 330px; margin: 0 0 4px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+		.profile-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+		.profile { min-width: 0; }
+		.profile-photo { height: 255px; overflow: hidden; background: #e8e2d7; }
+		.profile-photo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+		.profile:hover .profile-photo img { transform: scale(1.035); }
+		.profile-body { padding: 17px 2px 0; }
+		.profile-label { color: var(--rust); font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+		.profile h3 { margin: 8px 0; font: 600 24px var(--serif); }
+		.profile p { max-width: 350px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.75; }
+		.quiz-section { padding: 68px 0; background: #e7e9dc; }
+		.quiz-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 65px; align-items: start; }
+		.quiz-intro h2 { margin: 14px 0; font: 600 clamp(39px, 4.7vw, 54px)/1.04 var(--serif); }
+		.quiz-intro p { max-width: 330px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+		.quiz-box { padding: 26px 29px 24px; border-top: 2px solid var(--moss); background: rgba(255,253,248,.65); }
+		.quiz-count { color: var(--moss); font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+		.quiz-question { min-height: 57px; margin: 10px 0 16px; font: 600 24px/1.25 var(--serif); }
+		.answers { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+		.answer { min-height: 48px; padding: 10px 12px; border: 1px solid #c8cebf; border-radius: 3px; background: transparent; color: var(--ink); cursor: pointer; text-align: left; font-size: 12px; transition: color .16s, background .16s, border-color .16s; }
+		.answer:hover, .answer:focus-visible { border-color: var(--moss); outline: none; }
+		.answer[aria-pressed="true"] { border-color: var(--moss); background: var(--moss); color: white; }
+		.quiz-controls { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 19px; }
+		.progress { display: flex; gap: 5px; }
+		.progress span { width: 22px; height: 3px; background: #c8cebf; }
+		.progress span.active { background: var(--rust); }
+		.next { display: flex; align-items: center; gap: 12px; padding: 11px 14px; border: 0; border-radius: 3px; background: var(--rust); color: white; font-size: 11px; font-weight: 700; cursor: pointer; }
+		.next:disabled { opacity: .42; cursor: not-allowed; }
+		.quiz-result { display: none; padding: 21px; border-left: 3px solid var(--rust); background: rgba(255,253,248,.7); }
+		.quiz-result.visible { display: block; }
+		.quiz-result h3 { margin: 9px 0; font: 600 28px var(--serif); }
+		.quiz-result p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.75; }
+		.fact { display: grid; grid-template-columns: 1fr 1fr; gap: 67px; align-items: center; padding: 76px 0; }
+		.fact-image { height: 340px; }
+		.fact-image img { width: 100%; height: 100%; object-fit: cover; }
+		.fact-copy h2 { margin: 12px 0 15px; font: 600 clamp(36px, 4vw, 49px)/1.08 var(--serif); }
+		.fact-copy p { max-width: 430px; color: var(--muted); font-size: 14px; line-height: 1.8; }
+		.fact-button { display: inline-flex; align-items: center; gap: 12px; margin-top: 3px; padding: 0 0 6px; border: 0; border-bottom: 1px solid var(--moss); background: none; color: var(--moss); font-weight: 700; font-size: 12px; cursor: pointer; }
+		.fact-button span { font-size: 17px; transition: transform .2s; }
+		.fact-button:hover span { transform: rotate(35deg); }
+		footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+		.footer-inner { display: flex; justify-content: space-between; gap: 16px; padding: 21px 0; }
+		.footer-inner strong { color: var(--moss); }
+		@media (max-width: 740px) {
+			.wrap { width: min(100% - 36px, 560px); }
+			.masthead { min-height: 65px; }
+			.edition { font-size: 9px; }
+			.hero { grid-template-columns: 1fr; gap: 30px; padding: 49px 0 58px; }
+			h1 { font-size: clamp(54px, 15vw, 77px); }
+			.hero-art { height: 105vw; min-height: 325px; max-height: 480px; margin: 0 18px 0 2px; }
+			.round-note { right: -16px; width: 105px; height: 105px; }
+			.round-note strong { font-size: 24px; }
+			.ribbon-inner { justify-content: flex-start; overflow: hidden; gap: 20px; font-size: 15px; }
+			.ribbon-inner span:nth-of-type(n+3) { display: none; }
+			.section { padding: 60px 0; }
+			.section-head { display: block; }
+			.section-head > p { margin-top: 15px; }
+			.profile-grid { grid-template-columns: 1fr; gap: 29px; }
+			.profile-photo { height: min(69vw, 330px); }
+			.quiz-section { padding: 54px 0; }
+			.quiz-layout { grid-template-columns: 1fr; gap: 23px; }
+			.quiz-box { padding: 21px 16px; }
+			.quiz-question { font-size: 22px; }
+			.answer { font-size: 11px; }
+			.fact { grid-template-columns: 1fr; gap: 26px; padding: 58px 0; }
+			.fact-image { height: 63vw; min-height: 220px; max-height: 340px; }
+			.footer-inner { flex-direction: column; gap: 7px; }
+		}
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+		}
+	</style>
+</head>
+<body>
+	<header class="wrap masthead">
+		<div class="wordmark"><span class="cat-icon" aria-hidden="true">✳</span> La vie en miaou</div>
+		<div class="edition">Le petit journal du chat · N° 01</div>
+	</header>
+
+	<main>
+		<section class="wrap hero" aria-labelledby="main-title">
+			<div>
+				<div class="kicker">Le monde à hauteur de moustaches</div>
+				<h1 id="main-title">La vie est plus douce <em>avec un chat.</em></h1>
+				<p class="intro">Experts en siestes, spécialistes des cartons, colocataires au caractère bien à eux : les chats savent transformer les petits instants en grands rituels.</p>
+				<div class="hero-meta"><span class="meta-stamp" aria-hidden="true">♡</span> Un carnet pour celles et ceux qui les aiment</div>
+			</div>
+			<div class="hero-art">
+				<img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1200&q=85" alt="Un chat tigré se repose tranquillement dans la lumière">
+				<div class="round-note"><strong>9 vies</strong><span>et mille siestes</span></div>
+			</div>
+		</section>
+
+		<div class="ribbon" aria-label="Quelques petites vérités félines">
+			<div class="wrap ribbon-inner"><span>À son rythme <b>✳</b></span><span>À sa façon <b>✳</b></span><span>Jamais très loin <b>✳</b></span><span>Toujours chez lui</span></div>
+		</div>
+
+		<section class="wrap section" aria-labelledby="profiles-title">
+			<div class="section-head">
+				<div><div class="kicker">Portraits de moustaches</div><h2 id="profiles-title">Chaque chat a son petit monde.</h2></div>
+				<p>Indépendant ou pot-de-colle, explorateur ou champion du canapé : découvrez quelques grands tempéraments félins.</p>
+			</div>
+			<div class="profile-grid">
+				<article class="profile">
+					<div class="profile-photo"><img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=850&q=85" alt="Un chat roux observe attentivement son environnement" loading="lazy"></div>
+					<div class="profile-body"><div class="profile-label">L'explorateur</div><h3>Le nez partout</h3><p>Il inspecte chaque recoin et s'intéresse à tout ce qui bouge. Une fenêtre sécurisée devient son cinéma préféré.</p></div>
+				</article>
+				<article class="profile">
+					<div class="profile-photo"><img src="https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=850&q=85" alt="Un chat détendu profite d'un moment calme" loading="lazy"></div>
+					<div class="profile-body"><div class="profile-label">Le contemplatif</div><h3>L'art de la sieste</h3><p>Il choisit son rayon de soleil avec soin. Il aime les habitudes tranquilles et les endroits douillets.</p></div>
+				</article>
+				<article class="profile">
+					  <div class="profile-photo"><img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=850&q=85" alt="Un chat observe son humain avec curiosité" loading="lazy"></div>
+					<div class="profile-body"><div class="profile-label">Le sociable</div><h3>Jamais bien loin</h3><p>Il vous suit de pièce en pièce, avec l'air de participer à toutes vos affaires. Les moments partagés, c'est son truc.</p></div>
+				</article>
+			</div>
+		</section>
+
+		<section class="quiz-section" aria-labelledby="quiz-title">
+			<div class="wrap quiz-layout">
+				<div class="quiz-intro"><div class="kicker">Un jeu tout doux</div><h2>Quel tempérament félin vous ressemble ?</h2><p>Deux questions pour le plaisir de comparer vos habitudes. Chaque chat reste unique, bien sûr.</p></div>
+				<div class="quiz-box" id="quiz-box" aria-live="polite">
+					<div class="quiz-count" id="quiz-count">Question 1 sur 2</div>
+					<h3 class="quiz-question" id="quiz-question">Votre moment préféré à la maison ?</h3>
+					<div class="answers" id="answers"></div>
+					<div class="quiz-controls" id="quiz-controls">
+						<div class="progress" aria-hidden="true"><span class="active"></span><span></span></div>
+						<button class="next" id="next" type="button" disabled>Continuer <span aria-hidden="true">→</span></button>
+					</div>
+					<div class="quiz-result" id="quiz-result" role="status"></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="wrap fact" aria-labelledby="fact-title">
+			<div class="fact-image"><img src="https://images.unsplash.com/photo-1511044568932-338cba0ad803?auto=format&fit=crop&w=1000&q=85" alt="Un chat curieux aux oreilles dressées" loading="lazy"></div>
+			<div class="fact-copy"><div class="kicker">La minute féline</div><h2 id="fact-title">Le ronron, petit mystère.</h2><p id="fact-text">Les chats ronronnent souvent quand ils sont détendus, mais aussi pour communiquer ou se rassurer. Le contexte et leur langage corporel donnent de précieux indices.</p><button class="fact-button" id="fact-button" type="button">Une autre anecdote <span aria-hidden="true">↗</span></button></div>
+		</section>
+	</main>
+
+	<footer><div class="wrap footer-inner"><strong>La vie en miaou</strong><span>Pour les amoureux des siestes au soleil et des bols bien remplis.</span><span>© 2026</span></div></footer>
+
+	<script>
+		const questions = [
+			{
+				prompt: "Votre moment préféré à la maison ?",
+				answers: [
+					{ text: "Bouger et découvrir", type: "curieux" },
+					{ text: "Me poser au calme", type: "calme" },
+					{ text: "Être avec les autres", type: "sociable" },
+					{ text: "Suivre mon humeur", type: "libre" }
+				]
+			},
+			{
+				prompt: "En week-end, vous préférez…",
+				answers: [
+					{ text: "Partir à l'aventure", type: "curieux" },
+					{ text: "Prendre mon temps", type: "calme" },
+					{ text: "Voir mes proches", type: "sociable" },
+					{ text: "Improviser la journée", type: "libre" }
+				]
+			}
+		];
+		const temperaments = {
+			curieux: ["Le petit explorateur", "Vous avez le goût des découvertes ! Un chat curieux appréciera les jeux, les cachettes et un environnement enrichi pour satisfaire son envie d'explorer."],
+			calme: ["Le grand contemplatif", "Vous savez savourer les moments paisibles. Un chat posé pourrait aimer votre rythme, avec ses coins douillets et ses longues pauses au soleil."],
+			sociable: ["Le compagnon sociable", "Vous aimez partager votre quotidien. Un chat proche de ses humains pourrait vous suivre partout, tout en ayant besoin de ses moments à lui."],
+			libre: ["L'esprit indépendant", "Vous appréciez la liberté de choisir. Un chat indépendant pourrait vous ressembler : présent à sa manière, sans renoncer à ses petites habitudes."]
+		};
+		let questionIndex = 0;
+		const chosen = [];
+		const questionTitle = document.querySelector("#quiz-question");
+		const countLabel = document.querySelector("#quiz-count");
+		const answersBox = document.querySelector("#answers");
+		const nextButton = document.querySelector("#next");
+		const resultBox = document.querySelector("#quiz-result");
+
+		function showQuestion() {
+			const question = questions[questionIndex];
+			countLabel.textContent = `Question ${questionIndex + 1} sur ${questions.length}`;
+			questionTitle.textContent = question.prompt;
+			answersBox.replaceChildren();
+			question.answers.forEach((answer) => {
+				const option = document.createElement("button");
+				option.type = "button";
+				option.className = "answer";
+				option.textContent = answer.text;
+				option.setAttribute("aria-pressed", "false");
+				option.addEventListener("click", () => {
+					chosen[questionIndex] = answer.type;
+					answersBox.querySelectorAll(".answer").forEach((item) => item.setAttribute("aria-pressed", String(item === option)));
+					nextButton.disabled = false;
+				});
+				answersBox.append(option);
+			});
+			document.querySelectorAll(".progress span").forEach((step, index) => step.classList.toggle("active", index <= questionIndex));
+			nextButton.disabled = !chosen[questionIndex];
+			nextButton.innerHTML = questionIndex === questions.length - 1 ? 'Découvrir mon profil <span aria-hidden="true">→</span>' : 'Continuer <span aria-hidden="true">→</span>';
+		}
+
+		nextButton.addEventListener("click", () => {
+			if (!chosen[questionIndex]) return;
+			if (questionIndex < questions.length - 1) {
+				questionIndex += 1;
+				showQuestion();
+				return;
+			}
+			const counts = chosen.reduce((scores, type) => {
+				scores[type] = (scores[type] || 0) + 1;
+				return scores;
+			}, {});
+			const profile = Object.keys(counts).sort((first, second) => counts[second] - counts[first])[0];
+			resultBox.innerHTML = `<div class="quiz-count">Votre petit profil</div><h3>${temperaments[profile][0]}</h3><p>${temperaments[profile][1]}</p>`;
+			resultBox.classList.add("visible");
+			document.querySelector("#quiz-controls").hidden = true;
+			answersBox.hidden = true;
+			questionTitle.hidden = true;
+			countLabel.hidden = true;
+		});
+		showQuestion();
+
+		const anecdotes = [
+			"Les chats ronronnent souvent quand ils sont détendus, mais aussi pour communiquer ou se rassurer. Le contexte et leur langage corporel donnent de précieux indices.",
+			"Un chat se frotte parfois contre vous pour déposer son odeur et marquer un lieu familier. C'est aussi une façon de vous saluer à sa manière.",
+			"Les moustaches aident le chat à percevoir son environnement proche. Elles sont sensibles : mieux vaut éviter de les toucher ou de les couper."
+		];
+		let anecdoteIndex = 0;
+		document.querySelector("#fact-button").addEventListener("click", () => {
+			anecdoteIndex = (anecdoteIndex + 1) % anecdotes.length;
+			document.querySelector("#fact-text").textContent = anecdotes[anecdoteIndex];
+		});
+	</script>
+</body>
+</html>
